@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work05/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work05/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Ayumu</a>
+        <!-- ハンバーガーメニュー -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="burger">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </label>
+        <nav class="navi">
+            <ul class="menu">
+                <li><a href="#">Top</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#goal">Goal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="mainvisual">
+            <div class="mainvisual-photo"></div>
+            <div class="main-nav">
+                <h1>Ayumu Inutsuka</h1>
+                <div class="main-nav-list">
+                    <nav>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#works">Works</a></li>
+                            <li><a href="#goal">Goal</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <section class="about">
+            <h2 id="about">About</h2>
+            <p>私について</p>
+            <div class="about-content">
+                <img src="{% static 'work05/images/man.jpeg' %}" alt="私の写真">
+                <div class="about-text">
+                    <div class="name">
+                        <h3>{{ name }}</h3>
+                        <p>Ayumu Inutsuka</p>
+                    </div>
+                    <p>生年月日: 2006年4月27日</p>
+                    <p>出身地: 福岡県</p>
+                    <p>血液型: A型</p>
+                    <p>よく真面目な性格だと言われます。<br>
+                        ゲーム・音楽・旅行が好きです。<br>
+                        朝日や夕日などの綺麗な写真を撮るのがすきです。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="photos">
+            <div class="photos-title">
+                <h2>Photos</h2>
+                <p>scroll ＞</p>
+            </div>
+            <div class="gallery">
+                <img src="{% static 'work05/images/img1.jpeg' %}" alt="ギャラリー1">
+                <img src="{% static 'work05/images/img2.jpeg' %}" alt="ギャラリー2">
+                <img src="{% static 'work05/images/img3.jpeg' %}" alt="ギャラリー3">
+                <img src="{% static 'work05/images/img4.jpeg' %}" alt="ギャラリー4">
+                <img src="{% static 'work05/images/img5.jpeg' %}" alt="ギャラリー5">
+                <img src="{% static 'work05/images/img6.jpeg' %}" alt="ギャラリー6">
+                <img src="{% static 'work05/images/img7.jpeg' %}" alt="ギャラリー7">
+                <img src="{% static 'work05/images/img8.jpeg' %}" alt="ギャラリー8">
+            </div>
+        </section>
+
+        <section class="works">
+            <div class="works-title">
+                <h2 id="works">Works</h2>
+                <p>制作実績</p>
+            </div>
+            <div class="works-list">
+                <article class="works-item">
+                    <img src="{% static 'work05/images/works1.jpg' %}" alt="作品1">
+                    <h3>プロフィールサイト</h3>
+                    <p>2025/08/11 学校課題</p>
+                </article>
+                <article class="works-item">
+                    <img src="{% static 'work05/images/works2.jpg' %}" alt="作品2">
+                    <h3>迷路ゲーム</h3>
+                    <p>2025/07/24 学校課題</p>
+                </article>
+                <article class="works-item">
+                    <img src="{% static 'work05/images/works3.jpg' %}" alt="作品3">
+                    <h3>カフェ新作バナー</h3>
+                    <p>2025/07/26 学校課題</p>
+                </article>
+                <article class="works-item">
+                    <img src="{% static 'work05/images/works4.jpg' %}" alt="作品4">
+                    <h3>カフェ新作バナー</h3>
+                    <p>2025/07/27 学校課題</p>
+                </article>
+                <article class="works-item">
+                    <img src="{% static 'work05/images/works5.jpg' %}" alt="作品5">
+                    <h3>カフェ新作バナー</h3>
+                    <p>2025/07/28 学校課題</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="goal-bgc">
+            <div class="goal">
+                <div class="goal-title">
+                    <h2 id="goal">Goal</h2>
+                    <p>目標</p>
+                </div>
+                <div class="goal-content">
+                    <p>基礎を身につける</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="#about" class="footer-bold">About</a>
+                <a href="#about" class="footer-normal">私について</a>
+            </div>
+            <div class="footer-works">
+                <a href="#works" class="footer-bold">Works</a>
+                <a href="#works" class="footer-normal">私について</a>
+            </div>
+            <div class="footer-goal">
+                <a href="#goal" class="footer-bold">Goal</a>
+                <a href="#goal" class="footer-normal">目標</a>
+            </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work06/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work06/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reiwa</title>
+</head>
+
+<body>
+    <h1>令和何年ですかツール</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">変換</button>
+    </form>
+
+    {% if reiwa_year %}
+    <p class="bold">令和{{ year }}年は西暦{{ reiwa_year }}年です</p>
+    {% endif %}
+</body>
+
+</html>

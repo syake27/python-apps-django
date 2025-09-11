@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work06/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work06/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+
+<body>
+    <h1>2つの数字の電卓ツール</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">計算</button>
+    </form>
+
+    {% if number1 %}
+    <p class="bold">結果</p>
+    <p>{{ number1 }} + {{ number2 }} = {{ add }}</p>
+    <p>{{ number1 }} - {{ number2 }} = {{ subtract }}</p>
+    <p>{{ number1 }} × {{ number2 }} = {{ multiply }}</p>
+    <p>{{ number1 }} ÷ {{ number2 }} = {{ divide }}</p>
+    {% endif %}
+</body>
+
+</html>

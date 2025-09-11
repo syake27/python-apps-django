@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work06/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work06/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>warikan</title>
+</head>
+
+<body>
+    <h1>割り勘計算ツール</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">計算</button>
+    </form>
+
+    {% if person %}
+    <p class="bold">1人の金額は{{ person }}です</p>
+    <p class="bold">あまりは{{ remainder }}</p>
+    {% endif %}
+</body>
+
+</html>

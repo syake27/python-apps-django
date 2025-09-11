@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work06/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work06/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toppage</title>
+</head>
+
+<body>
+    <h1>いろいろ計算ツール</h1>
+    <ul>
+        <li><a href="{% url 'work06:reiwa' %}">令和何年ですかツール</a></li>
+        <li><a href="{% url 'work06:bmi' %}">BMI計算ツール</a></li>
+        <li><a href="{% url 'work06:warikan' %}">割り勘計算ツール</a></li>
+        <li><a href="{% url 'work06:chokin' %}">貯金計算ツール</a></li>
+        <li><a href="{% url 'work06:calculator' %}">2つの数字の電卓ツール</a></li>
+    </ul>
+</body>
+
+</html>

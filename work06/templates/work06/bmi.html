@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work06/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work06/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi</title>
+</head>
+
+<body>
+    <h1>BMI計算ツール</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">計算</button>
+    </form>
+
+    {% if bmi %}
+    <p class="bold">あなたのBMIは{{ bmi }}です</p>
+    <p class="bold">{{ result }}です</p>
+    {% endif %}
+</body>
+
+</html>

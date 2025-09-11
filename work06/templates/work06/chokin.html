@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chokin</title>
+</head>
+
+<body>
+    <h1>貯金計算ツール</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">計算</button>
+    </form>
+    {% if combined %}
+    <p class="bold"> 1か月の貯金額は{{ chokin_amount }}です</p>
+    {% for mo, value in combined %}
+    <p>{{ mo }}後{{ value }}円</p>
+    {% endfor %}
+
+    {% endif %}
+</body>
+
+</html>

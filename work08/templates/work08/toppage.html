@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memo</title>
+</head>
+
+<body>
+    <h1>メモ帳アプリ</h1>
+    <a href="{% url 'work08:new_memopage' %}"><button type="button">メモを追加</button></a>
+    <hr>
+    <h2>メモ一覧</h2>
+    <ul>
+        {% if memos %}
+        {% for i in memos %}
+        <li>
+            <a href="{% url 'work08:memopage' i.id %}"><button type="button">編集</button></a>
+            <h3>{{ i.memo_title }}{{ i.id}}</h3>
+            <hr>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p>メモはまだありません。</p>
+        {% endif %}
+    </ul>
+</body>
+
+</html>

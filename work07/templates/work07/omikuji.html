@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work07/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work07/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>omikuji</title>
+</head>
+
+<body>
+    <h1>おみくじ</h1>
+
+    <a href="?play=true"><button class="btn">おみくじを引く</button></a>
+
+    {% if omikuji %}
+    <h2>結果: {{ omikuji }}</h2>
+    {% endif %}
+</body>
+
+</html>

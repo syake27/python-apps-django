@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work07/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work07/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>janken</title>
+</head>
+
+<body>
+    <h1>ジャンケンゲーム</h1>
+
+    <a href="?guu=true"><button class="btn">👊</button></a>
+    <a href="?choki=true"><button class="btn">✌️</button></a>
+    <a href="?paa=true"><button class="btn">🖐️</button></a>
+
+
+    {% if result %}
+    <div class="result-box">
+        <p class="bold">あなた: {{ player }}</p>
+        <p class="bold">コンピュータ: {{ computer }}</p>
+        <p class="bold">結果: {{ result }}</p>
+    </div>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+h1 {
+  font-weight: bold;
+  font-size: 50px;
+  margin: 50px 0;
+}
+
+.btn {
+  background-color: skyblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 50px 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.result-box {
+  margin: 50px 0;
+}

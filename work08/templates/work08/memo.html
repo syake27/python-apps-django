@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memo</title>
+</head>
+
+<body>
+    <h1>メモ帳</h1>
+    <form method="post"
+        action="{% if m %}{% url 'work08:memo_update' m.id %}{% else %}{% url 'work08:memo_create' %}{% endif %}">
+        {% csrf_token %}
+        <p>タイトル:
+            <input type="text" name="memo_title" value="{% if m %}{{ m.memo_title }}{% endif %}" required>
+        </p>
+        <p>内容:
+            <textarea name="memo_content" rows="5" cols="40"
+                required>{% if m %}{{ m.memo_content }}{% endif %}</textarea>
+        </p>
+        <button type="submit">{% if m %}更新{% else %}保存{% endif %}</button>
+    </form>
+
+    <a href="{% url 'work08:toppage' %}">メモ一覧へ</a>
+
+</body>
+
+</html>

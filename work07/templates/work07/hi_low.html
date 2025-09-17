@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi_low</title>
+</head>
+
+<body>
+    <h1>Hi & Low ゲーム</h1>
+
+    <p>基準の数字: {{ number_set }}</p>
+
+    <form method="get">
+        <input type="hidden" name="number_set" value="{{ number_set }}">
+        <button type="submit" name="HI">HI</button>
+        <button type="submit" name="LOW">LOW</button>
+    </form>
+
+    {% if result %}
+    <p>勝負の数字: {{ number }}</p>
+    <p>結果: {{ result }}</p>
+    {% endif %}
+
+</body>
+
+</html>

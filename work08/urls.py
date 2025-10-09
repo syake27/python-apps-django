@@ -10,4 +10,5 @@ urlpatterns = [
     path("memopage/<int:id>/", views.memopage, name="memopage"),
     path("memo_create/", views.memo_create, name="memo_create"),
     path("memo_update/<int:id>/", views.memo_update, name="memo_update"),
+    path("delete/<int:id>/", views.memo_delete, name="memo_delete"),
 ]

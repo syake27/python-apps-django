@@ -9,8 +9,9 @@
 
 <body>
     <h1>メモ帳</h1>
-    <form method="post"
+    <form method="post" enctype="multipart/form-data"
         action="{% if m %}{% url 'work08:memo_update' m.id %}{% else %}{% url 'work08:memo_create' %}{% endif %}">
+
         {% csrf_token %}
         <p>タイトル:
             <input type="text" name="memo_title" value="{% if m %}{{ m.memo_title }}{% endif %}" required>
@@ -19,6 +20,15 @@
             <textarea name="memo_content" rows="5" cols="40"
                 required>{% if m %}{{ m.memo_content }}{% endif %}</textarea>
         </p>
+        <p>画像:
+            <input type="file" name="memo_image">
+        </p>
+
+        {% if m and m.memo_image %}
+        <p>現在の画像:</p>
+        <img src="{{ m.memo_image.url }}" alt="現在の画像" width="200">
+        {% endif %}
+
         <button type="submit">{% if m %}更新{% else %}保存{% endif %}</button>
     </form>
 

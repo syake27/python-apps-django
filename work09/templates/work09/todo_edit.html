@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work09/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work09/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo_edit</title>
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="task_box">
+            <div class="task_elm">
+                <label for="id_title" class="todo_task">タスク名:</label>
+                {{ form.title }}
+            </div>
+            <div class="task_elm">
+                <label for="id_description" class="todo_task">詳細内容:</label>
+                {{ form.description }}
+            </div>
+            <div class="due_date task_elm">
+                <label for="id_due_date" class="todo_task">期限日:</label>
+                <input type="date" name="due_date" id="id_due_date" min="1000-01-01" max="9999-12-31"
+                    value="{{ form.due_date.value|default_if_none:'' }}">
+            </div>
+            <div class="btn_group">
+                <button type="submit" class="create_btn">タスクを更新</button>
+                <button type="button" class="delete_btn"
+                    onclick="if(confirm('本当に削除しますか？')) { location.href='{% url 'work09:todo_delete' todo.id %}'; }">
+                    削除
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

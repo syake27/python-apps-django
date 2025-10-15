@@ -40,20 +40,20 @@
     <h2 class="left_line">ToDo一覧</h2>
     <div class="filter">
         <p>表示:</p>
-        <a>
-            <button type="button" class="all_btn">全て</button>
-        </a>
-        <a>
-            <button type="button" class="completed_btn">未完了</button>
-        </a>
-        <a>
-            <button type="button" class="completed_btn">完了済み</button>
-        </a>
+        <a href="?status=all{% if sort_order %}&sort={{ sort_order }}{% endif %}" class="all_btn">すべて</a>
+        <a href="?status=incomplete{% if sort_order %}&sort={{ sort_order }}{% endif %}" class="completed_btn">未完了</a>
+        <a href="?status=completed{% if sort_order %}&sort={{ sort_order }}{% endif %}" class="completed_btn">完了</a>
     </div>
     <div class="sort">
         <p>完了状況</p>
         <p>タスク名</p>
-        <p>期限日</p>
+        <a href="?sort={{ next_sort }}">
+            期限日
+            {% if sort_order == 'asc' %}
+            ▲
+            {% else %}
+            ▼
+            {% endif %}</a>
         <p>登録日</p>
         <p>完了/未完了</p>
     </div>
@@ -61,13 +61,20 @@
     <ul>
         {% for i in todos %}
         <li>
-            <div class="todo_task_box">
+            <div
+                class="todo_task_box {% if i.is_completed %} completed {% elif i.due_date < today %} expired {% endif %}">
                 <p class="completed_content">{{ i.is_completed }}</p>
-                <h3 class="title_content">{{ i.title }}</h3>
+                <h3 class="title_content">
+                    <a href="{% url 'work09:todo_edit' i.id %}">
+                        {{ i.title }}
+                    </a>
+                </h3>
                 <p class="due_date_content">{{ i.due_date|date:"Y年m月d日" }}</p>
                 <p>{{ i.created_at|date:"Y年m月d日 H:i" }}</p>
-                <a>
-                    <button type="button" class="complete_btn">完了/未完了</button>
+                <a href="{% url 'work09:todo_toggle' i.id %}">
+                    <button type="button" class="complete_btn">
+                        {% if i.is_completed %}未完了に戻す{% else %}完了にする{% endif %}
+                    </button>
                 </a>
             </div>
         </li>

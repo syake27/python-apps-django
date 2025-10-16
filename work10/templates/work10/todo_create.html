@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work10/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'work10/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo_create</title>
+</head>
+
+<body>
+    <h1>タスク作成</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="task_box">
+            <div class="task_elm">
+                <label for="id_title">タスク名</label>
+                {{ form.title }}
+            </div>
+            <div class="task_elm">
+                <label for="id_description">詳細内容</label>
+                {{ form.description }}
+            </div>
+            <div class="due_date task_elm">
+                <label for="id_due_date">期限日</label>
+                <input type="date" name="due_date" id="id_due_date" min="1000-01-01" max="9999-12-31"
+                    value="{{ form.due_date.value|default_if_none:'' }}">
+            </div>
+
+            <div class="task_elm">
+                <label for="id_is_completed">完了済み？</label>
+                {{ form.is_completed }}
+            </div>
+        </div>
+        <button type="submit" class="create_btn">タスクを作成</button>
+    </form>
+
+</body>
+
+</html>
+
+
+
+
+
+<!-- データの保存までできた次回はtoppageに内容を表示させるところから -->

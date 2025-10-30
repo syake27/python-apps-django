@@ -9,6 +9,6 @@ def index(request):
 
 def profile(request):
     context = {
-        "name": "犬塚　歩夢",
+        "name": "歩夢",
     }
     return render(request, "work05/index.html", context)

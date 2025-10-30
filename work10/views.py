@@ -6,11 +6,13 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from work10.models import Todo
+
 
 # Create your views here.
 
 
-@login_required  # ここでログイン必須にする
+@login_required
 def todo_list(request):
     todos = Todo.objects.filter(user=request.user)  # 自分のタスクだけ取得
     today = timezone.now().date()
@@ -54,7 +56,6 @@ def todo_list(request):
     )
 
 
-@login_required
 def todo_create(request):
     if request.method == "POST":
         form = TodoForm(request.POST)
@@ -82,9 +83,10 @@ def todo_edit(request, pk):
     return render(request, "work10/todo_edit.html", {"form": form, "todo": todo})
 
 
+@login_required
 def todo_toggle(request, pk):
-    todo = get_object_or_404(Todo, pk=pk)
-    todo.is_completed = not todo.is_completed  # ← True/Falseを反転
+    todo = get_object_or_404(Todo, pk=pk, user=request.user)
+    todo.is_completed = not todo.is_completed
     todo.save()
     return redirect("work10:todo_list")
 

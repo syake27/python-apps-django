@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,6 +29,10 @@ urlpatterns = [
     path("work08/", include("work08.urls")),
     path("work09/", include("work09.urls")),
     path("work10/", include("work10.urls")),
+    path("work11/", include("work11.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", views.app_list, name="app_list"),
 ]
 
 if settings.DEBUG:

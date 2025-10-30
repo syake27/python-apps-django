@@ -16,7 +16,11 @@
         {% if request.user.is_authenticated %}
         <div class="user_info">
             <p>ようこそ、{{ request.user.username }}さん</p>
-            <a href="{% url 'work10:logout' %}">ログアウト</a>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">ログアウト</button>
+            </form>
+
         </div>
         {% else %}
         <a href="{% url 'work10:login' %}" class="login">ログイン</a>
@@ -58,6 +62,7 @@
     <div class="sort">
         <p>完了状況</p>
         <p>タスク名</p>
+        <p>製作者</p>
         <a href="?sort={{ next_sort }}">
             期限日
             {% if sort_order == 'asc' %}
@@ -76,13 +81,14 @@
                 class="todo_task_box {% if i.is_completed %} completed {% elif i.due_date < today %} expired {% endif %}">
                 <p class="completed_content">{{ i.is_completed }}</p>
                 <h3 class="title_content">
-                    <a href="{% url 'work09:todo_edit' i.id %}">
+                    <a href="{% url 'work10:todo_edit' i.id %}">
                         {{ i.title }}
                     </a>
                 </h3>
+                <p>{{ i.user.username }}</p>
                 <p class="due_date_content">{{ i.due_date|date:"Y年m月d日" }}</p>
                 <p>{{ i.created_at|date:"Y年m月d日 H:i" }}</p>
-                <a href="{% url 'work09:todo_toggle' i.id %}">
+                <a href="{% url 'work10:todo_toggle' i.id %}">
                     <button type="button" class="complete_btn">
                         {% if i.is_completed %}未完了に戻す{% else %}完了にする{% endif %}
                     </button>
